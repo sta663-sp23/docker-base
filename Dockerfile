@@ -41,9 +41,9 @@ RUN apt-get install -yq --no-install-recommends \
     libarmadillo-dev \
     libeigen3-dev
 
-RUN wget https://github.com/quarto-dev/quarto-cli/releases/download/v0.3.73/quarto-0.3.73-linux-amd64.deb \
-    && DEBIAN_FRONTEND=noninteractive gdebi --n quarto-0.3.73-linux-amd64.deb \
-    && rm quarto-0.3.73-linux-amd64.deb
+RUN wget https://github.com/quarto-dev/quarto-cli/releases/download/v0.9.24/quarto-0.9.24-linux-amd64.deb \
+    && DEBIAN_FRONTEND=noninteractive gdebi --n quarto-0.9.24-linux-amd64.deb \
+    && rm quarto-0.9.24-linux-amd64.deb
 
 
 # python and related stuff
@@ -60,9 +60,7 @@ RUN pip install \
     jupyter \
     notebook \
     jupyterlab \
-    ipykernel
-
-RUN pip install \
+    ipykernel \
     numpy \
     ipywidgets \
     pandas \
@@ -83,14 +81,14 @@ RUN pip install \
     ipython-sql \
     pandasql \
     memory_profiler \
-    ipyparallel \
-    tensorflow \
-    tensorflow-probability \
-    keras \
-    torch \
-    pymc3 \
-    pystan \
-    arrow
+    ipyparallel
+#    tensorflow \
+#    tensorflow-probability \
+#    keras \
+#    torch \
+#    pymc3 \
+#    pystan \
+#    arrow
 
 RUN apt-get clean \
  && rm -rf /var/lib/apt/lists/*
