@@ -81,14 +81,15 @@ RUN pip install \
     ipython-sql \
     pandasql \
     memory_profiler \
-    ipyparallel
+    ipyparallel \
+    pymc3 \
+    pystan \
+    arrow \
+    scikit-plot
 #    tensorflow \
 #    tensorflow-probability \
 #    keras \
 #    torch \
-#    pymc3 \
-#    pystan \
-#    arrow
 
 RUN apt-get clean \
  && rm -rf /var/lib/apt/lists/*
