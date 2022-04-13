@@ -85,7 +85,8 @@ RUN pip install \
     pymc3 \
     pystan \
     arrow \
-    scikit-plot
+    scikit-plot \
+    torch
 #    tensorflow \
 #    tensorflow-probability \
 #    keras \
