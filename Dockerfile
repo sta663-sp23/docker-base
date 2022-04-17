@@ -87,10 +87,6 @@ RUN pip install \
     arrow \
     scikit-plot \
     torch
-#    tensorflow \
-#    tensorflow-probability \
-#    keras \
-#    torch \
 
 RUN apt-get clean \
  && rm -rf /var/lib/apt/lists/*
