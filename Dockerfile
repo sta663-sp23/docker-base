@@ -88,6 +88,9 @@ RUN pip install \
     scikit-plot \
     torch
 
+RUN pip install \
+ shapely
+
 RUN apt-get clean \
  && rm -rf /var/lib/apt/lists/*
 
