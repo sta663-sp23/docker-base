@@ -1,12 +1,7 @@
-FROM rocker/r-ubuntu:20.04
-
-ADD Rprofile.site /usr/lib/R/etc/Rprofile.site
+FROM ubuntu:22.04
 
 RUN apt-get update \
  && apt-get upgrade -y
-
-RUN install.r devtools rmarkdown tidyverse gifski \
- && installGithub.r rundel/checklist rundel/parsermd
 
 RUN apt-get install -y --no-install-recommends \
     libudunits2-dev \
@@ -34,26 +29,22 @@ RUN apt-get install -yq --no-install-recommends \
     manpages \
     manpages-dev \
     man \
-    gdebi
-
-RUN apt-get install -yq --no-install-recommends \
+    gdebi \
     libopenblas-dev \
     libarmadillo-dev \
     libeigen3-dev
 
-RUN wget https://github.com/quarto-dev/quarto-cli/releases/download/v0.9.24/quarto-0.9.24-linux-amd64.deb \
-    && DEBIAN_FRONTEND=noninteractive gdebi --n quarto-0.9.24-linux-amd64.deb \
-    && rm quarto-0.9.24-linux-amd64.deb
-
+RUN wget https://github.com/quarto-dev/quarto-cli/releases/download/v1.2.313/quarto-1.2.313-linux-amd64.deb \
+    && DEBIAN_FRONTEND=noninteractive gdebi --n quarto-*-linux-amd64.deb \
+    && rm quarto-*-linux-amd64.deb
 
 # python and related stuff
 RUN apt-get install -y --no-install-recommends \
-    python3.9-dev \
-    python3.9-distutils && \
-    ln -sf /usr/bin/python3.9 /usr/bin/python3 && \
-    ln -sf /usr/bin/python3.9 /usr/bin/python && \
+    python3-dev \
+    python3-distutils && \
+    ln -sf /usr/bin/python3 /usr/bin/python && \
     wget --quiet https://bootstrap.pypa.io/get-pip.py -O /tmp/get-pip.py && \
-    python3.9 /tmp/get-pip.py && \
+    python3 /tmp/get-pip.py && \
     rm -f /tmp/get-pip.py
 
 RUN pip install \
@@ -86,10 +77,11 @@ RUN pip install \
     pystan \
     arrow \
     scikit-plot \
-    torch
-
-RUN pip install \
- shapely
+    torch \
+    jax \
+    shiny \
+    shapely \
+    nbdev
 
 RUN apt-get clean \
  && rm -rf /var/lib/apt/lists/*
