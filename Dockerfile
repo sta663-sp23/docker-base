@@ -77,11 +77,9 @@ RUN pip install \
     pystan \
     arrow \
     scikit-plot \
-    torch \
     jax \
     shiny \
-    shapely \
-    nbdev
+    shapely
 
 RUN apt-get clean \
  && rm -rf /var/lib/apt/lists/*
