@@ -1,4 +1,6 @@
-FROM ubuntu:22.04
+FROM rocker/r-ubuntu:22.04
+
+ADD Rprofile.site /usr/lib/R/etc/Rprofile.site
 
 RUN apt-get update \
  && apt-get upgrade -y
@@ -33,6 +35,9 @@ RUN apt-get install -yq --no-install-recommends \
     libopenblas-dev \
     libarmadillo-dev \
     libeigen3-dev
+
+RUN install.r remotes \
+ && installGithub.r rundel/checklist
 
 RUN wget https://github.com/quarto-dev/quarto-cli/releases/download/v1.2.313/quarto-1.2.313-linux-amd64.deb \
     && DEBIAN_FRONTEND=noninteractive gdebi --n quarto-*-linux-amd64.deb \
