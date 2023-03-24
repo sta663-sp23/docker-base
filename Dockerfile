@@ -78,7 +78,7 @@ RUN pip install \
     pandasql \
     memory_profiler \
     ipyparallel \
-    pymc3 \
+    pymc \
     pystan \
     arrow \
     scikit-plot \
