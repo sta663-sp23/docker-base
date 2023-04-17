@@ -39,7 +39,7 @@ RUN apt-get install -yq --no-install-recommends \
 RUN install.r remotes \
  && installGithub.r rundel/checklist
 
-RUN wget https://github.com/quarto-dev/quarto-cli/releases/download/v1.2.335/quarto-1.2.335-linux-amd64.deb \
+RUN wget https://github.com/quarto-dev/quarto-cli/releases/download/v1.2.475/quarto-1.2.475-linux-amd64.deb \
     && DEBIAN_FRONTEND=noninteractive gdebi --n quarto-*-linux-amd64.deb \
     && rm quarto-*-linux-amd64.deb
 
@@ -84,8 +84,9 @@ RUN pip install \
     scikit-plot \
     jax \
     shiny \
-    shapely \
-    torch
+    shapely
+    
+RUN pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cpu
 
 RUN apt-get clean \
  && rm -rf /var/lib/apt/lists/*
