@@ -84,7 +84,8 @@ RUN pip install \
     scikit-plot \
     jax \
     shiny \
-    shapely
+    shapely \
+    torch
 
 RUN apt-get clean \
  && rm -rf /var/lib/apt/lists/*
